@@ -1,12 +1,14 @@
 [package]
-name = "intervals"
+name = "sprigrs"
 version = "0.0.0"
 authors = ["apljungquist"]
 edition = "2018"
 
 [dependencies]
 itertools = "0.9.0"
+pyo3 = { version = "0.12.3", features = ["extension-module"] }
 
 [lib]
-name = "libintervals"
+name = "sprigrs"
 path = "src/lib.rs"
+crate-type = ["cdylib"]
