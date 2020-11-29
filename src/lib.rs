@@ -61,7 +61,8 @@ impl Eq for HashablePyObject<'_> {}
 fn invert(py: Python, obj: PyObject) -> PyResult<PyObject> {
     let mut before: HashMap<HashablePyObject, HashablePyObject> = obj.extract(py)?;
     let expected_len = before.len();
-    let mut after: HashMap<HashablePyObject, HashablePyObject> = HashMap::new();
+    let mut after: HashMap<HashablePyObject, HashablePyObject> =
+        HashMap::with_capacity(expected_len);
     for (key, value) in before.drain() {
         after.insert(value, key);
     }
