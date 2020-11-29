@@ -2,14 +2,14 @@ from typing import Dict, TypeVar
 
 import pytest
 
-import sprigrs
+import sprigs
 
 
 @pytest.mark.parametrize(
     "index, expected", [(0, 1), (1, 1), (2, 2), (3, 3), (4, 5), (5, 8), (6, 13)]
 )
 def test_fib(index, expected):
-    assert sprigrs.fib(index) == expected
+    assert sprigs.fib(index) == expected
 
 
 T = TypeVar("T")
@@ -43,7 +43,7 @@ BAD = [
 
 
 @pytest.mark.parametrize("example", [good[0] for good in GOOD])
-@pytest.mark.parametrize("func", [sprigrs.invert, invert])
+@pytest.mark.parametrize("func", [sprigs.invert, invert])
 def test_invert_does_not_mutate_imput(func, example):
     expected = example.copy()
     func(example)
@@ -51,13 +51,13 @@ def test_invert_does_not_mutate_imput(func, example):
 
 
 @pytest.mark.parametrize("example, expected", GOOD)
-@pytest.mark.parametrize("func", [sprigrs.invert, invert])
+@pytest.mark.parametrize("func", [sprigs.invert, invert])
 def test_returns_expected(func, example, expected):
     assert func(example) == expected
 
 
 @pytest.mark.parametrize("before, cls", BAD)
-@pytest.mark.parametrize("func", [sprigrs.invert, invert])
+@pytest.mark.parametrize("func", [sprigs.invert, invert])
 def test_raises_expected(func, before, cls):
     with pytest.raises(cls):
         func(before)

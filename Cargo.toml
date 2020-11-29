@@ -1,14 +1,17 @@
 [package]
-name = "sprigrs"
+name = "sprigs"
 version = "0.0.0"
-authors = ["apljungquist"]
+authors = ["AP Ljungquist <ap@ljungquist.eu>"]
 edition = "2018"
+description = "Speedups for for python sprig package"
+repository = "https://github.com/apljungquist/sprigs"
+license = "MIT"
 
 [dependencies]
 itertools = "0.9.0"
 pyo3 = { version = "0.12.3", features = ["extension-module"] }
 
 [lib]
-name = "sprigrs"
+name = "sprigs"
 path = "src/lib.rs"
 crate-type = ["cdylib"]

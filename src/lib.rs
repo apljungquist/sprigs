@@ -17,7 +17,7 @@ fn invert(obj: PyObject) -> PyResult<PyObject> {
 }
 
 #[pymodule]
-fn sprigrs(_py: Python, m: &PyModule) -> PyResult<()> {
+fn sprigs(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_wrapped(wrap_pyfunction!(fib))?;
     m.add_wrapped(wrap_pyfunction!(invert))?;
 
