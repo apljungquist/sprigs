@@ -63,4 +63,4 @@ def test_returns_expected(func, example, expected):
 @pytest.mark.parametrize("func", [sprigs.invert, invert])
 def test_raises_expected(func, before, cls):
     with pytest.raises(cls):
-        func(before)
+        print(func(before))

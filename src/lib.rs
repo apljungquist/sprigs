@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 
+use pyo3::exceptions::PyValueError;
 use pyo3::prelude::{pyfunction, pymodule, PyModule, PyObject, PyResult, Python};
 use pyo3::{wrap_pyfunction, IntoPy};
 
@@ -17,11 +18,17 @@ fn fib(n: u32) -> u32 {
 #[pyfunction]
 fn invert(py: Python, obj: PyObject) -> PyResult<PyObject> {
     let mut before: HashMap<String, String> = obj.extract(py)?;
+    let expected_len = before.len();
     let mut after: HashMap<String, String> = HashMap::new();
     for (key, value) in before.drain() {
         after.insert(value, key);
     }
-    Ok(after.into_py(py))
+    let actual_len = after.len();
+    if actual_len == expected_len {
+        Ok(after.into_py(py))
+    } else {
+        Err(PyValueError::new_err("Duplicate values in mapping"))
+    }
 }
 
 #[pymodule]
