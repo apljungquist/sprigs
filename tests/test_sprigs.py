@@ -42,11 +42,14 @@ BAD = [
 ]
 
 
-@pytest.mark.parametrize("example", [good[0] for good in GOOD])
+@pytest.mark.parametrize("example", [vs[0] for vs in GOOD + BAD])
 @pytest.mark.parametrize("func", [sprigs.invert, invert])
 def test_invert_does_not_mutate_imput(func, example):
     expected = example.copy()
-    func(example)
+    try:
+        func(example)
+    except Exception:
+        pass
     assert example == expected
 
 
