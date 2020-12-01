@@ -103,6 +103,7 @@ pub fn intersecting_product<'a, T: Copy + cmp::Eq + hash::Hash + Ord, U: Ord>(
     intervals(after)
 }
 
+#[macro_use]
 macro_rules! map (
     { $($key:expr => $value:expr),+ } => {
         {
