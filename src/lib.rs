@@ -11,10 +11,11 @@ mod intervals;
 
 #[pyfunction]
 fn fib(n: u32) -> u32 {
-    if n >= 2 {
-        return fib(n - 1) + fib(n - 2);
+    match n {
+        0 => 0,
+        1 => 1,
+        _ => fib(n - 1) + fib(n - 2),
     }
-    return 1;
 }
 
 struct HashablePyObject<'source> {
